@@ -96,8 +96,8 @@ var UIController  = (function(){
 		budgetLabel: '.budget__value',
 		incomeLabel: '.budget__income--value',
 		expensesLabel: '.budget__expenses--value',
-		percentageLabel: '.budget__expenses--percentage'
-
+		percentageLabel: '.budget__expenses--percentage',
+		container: '.container'
 	};
 
 	return {
@@ -175,7 +175,12 @@ var controller = (function(budgetCtrl, UICtrl){
 			if (event.keyCode === 13  || event.which === 13)
 			ctrlAddItem();
 		});
+	
+
+		document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+
 	};
+
 
 
 	var updateBudget = function(){
@@ -201,8 +206,15 @@ var controller = (function(budgetCtrl, UICtrl){
 		}
 	};
 
+	var ctrlDeleteItem = function(event){
+		
+		console.log(event.target);		
+
+	};
+
 	return {
 		init: function() {
+			console.log("DAS");
 			UICtrl.displayBudget({
 				budget: 0,
 				totalInc: 0,
